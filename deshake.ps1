@@ -22,7 +22,7 @@ Else
 {
     $name = $(gci $path).BaseName # | $_.Name
     $outDirectory = $(gci $path).Directory.FullName
-    $output = gci $path | foreach { $_.BaseName + '.' +  ($(get-date -format s) -replace ':', '_') + '.AVI' }
+    $output = gci $path | foreach { $_.BaseName + '.' +  ($(get-date -format s) -replace ':|-', '') + '.AVI' }
     $outFullName = $($outDirectory + '\' + $output)
 
     Write-Output $('path={2}, name={0}, output={1}' -f $name, $output, $path)
