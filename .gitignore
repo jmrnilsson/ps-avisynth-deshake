@@ -1,0 +1,11 @@
+**/*virtualdub*
+
+**/*.png
+**/*.jobs
+**/*.avs
+**/*.script
+!**/*.template.avs
+!**/*.template.script
+**/*.log
+**/*.pass
+**/*.vdf

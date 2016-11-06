@@ -1,0 +1,7 @@
+SetMemoryMax(500)
+LoadVirtualDubPlugin ("C:\devwork\ps-avisynth-deshake\Deshaker.vdf", "deshaker", preroll=0)
+A1 = FFAudioSource("[0]")
+V1 = FFVideoSource("[0]")
+AudioDub(V1, A1).ConvertToRGB32(matrix="PC.709")
+Deshaker("19|2|30|4|1|0|1|0|640|480|1|2|1000|1000|1000|1000|4|1|3|2|8|30|300|4|M:\\usr\\FOTO\\\GOPROWORKDIR\\Deshaker.log|0|0|0|0|0|0|0|0|0|0|0|0|0|1|10|10|5|10|0|0|30|30|0|0|1|0|1|1|0|10|1000|1|90|1|1|20|5000|100|20|1|0|ff00ff")
+ConvertToYV12()

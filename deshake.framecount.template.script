@@ -1,0 +1,3 @@
+VirtualDub.Open("{0}","",0);
+VirtualDub.RunNullVideoPass();
+VirtualDub.Close();
