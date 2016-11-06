@@ -4,8 +4,8 @@
 **/*.jobs
 **/*.avs
 **/*.script
-!**/*.template.avs
-!**/*.template.script
+!**/*.template.*.avs
+!**/*.template.*.script
 **/*.log
 **/*.pass
 **/*.vdf
