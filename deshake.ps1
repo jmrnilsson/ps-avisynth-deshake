@@ -37,9 +37,8 @@ If (!$(Test-Path $log))
 
     ((Get-Content 'deshake.template.framecount.avs') | Out-String) -f $path, $($pwd.Path + '\' + $log) | Set-Content $script3
     ((Get-Content 'deshake.template.framecount.script') | Out-String) -f $($pwd.Path + '\' + $script3) -replace '\\', '\\' | Set-Content $script0
-    $(.\virtualdub32\VirtualDub.exe /s $($pwd.Path + '\' + $script0))
-    Write-Output 'Rerun job once frame counter completes..'
-    Exit 69
+    Write-Output 'Counting number of frames..'
+    $(.\virtualdub32\VirtualDub.exe /x /s $($pwd.Path + '\' + $script0) | Out-Null)
 }
 
 $script1 = $('deshake.{0}.pass1.avs' -f $name)
@@ -54,4 +53,4 @@ $scriptFullName1 = (gci $script1).FullName -replace '\\', '\\'
 $scriptFullName2 = (gci $script2).FullName -replace '\\', '\\'
 $out = $outFullName -replace '\\', '\\'
 
-((Get-Content 'deshake.template.jobs') | Out-String) -f $scriptFullName1, $scriptFullName2, $out, $frameCount | Set-Content $('deshake_all.{0}.jobs' -f $name)
+((Get-Content 'deshake.template.jobs') | Out-String) -f $scriptFullName1, $scriptFullName2, $out, $frameCount | Set-Content $('deshake.{0}.all.jobs' -f $name)
