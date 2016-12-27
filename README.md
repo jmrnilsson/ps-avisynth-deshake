@@ -1,4 +1,5 @@
-# Powershell video deshaker
+# Powershell video deshaker script generator
+Using Gunnar Thalin's excellent [Deshaker-plugin](http://www.guthspot.se/video/deshaker.htm) can be a tedious task because of settings. This script generates the necessary AviSynth and VirtualDub-scripts with some default-settings so that it can be done in a single stroke. 
 
 ## Requirements
 1. VirtualDub x86-version
