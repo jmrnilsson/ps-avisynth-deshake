@@ -8,8 +8,23 @@
 5. Move files from `ffm2-2.20-icl/x86` to `Program Files (x86)/AviSynth 2.5/plugins`
 
 ## Usage
+Common use case there is little more to it than:
 
-    PS > .\deshake.ps1 C:\**\GOPR0248.MP4
+1. Run the command in Powershell `PS> .\deshake.ps1 C:\**\GOPR0260.MP4`
+2. The first time around this starts VirtualDub and start reporting on total number of frames via the AviSynth-logger. The file is called `deshake.GOPR0260.stats.log`.
+3. Close VirtualDub as soon as it starts processing the file.
+4. Run the script again `PS> .\deshake.ps1 C:\**\GOPR0260.MP4`. This time around a total of six scripts have been created.
+
+
+	deshake.GOPR0260.all.jobs
+	deshake.GOPR0260.framecount.avs
+	deshake.GOPR0260.framecount.script
+	deshake.GOPR0260.pass1.avs
+	deshake.GOPR0260.pass2.avs
+	deshake.GOPR0260.stats.log
+
+5. Open VirtualDub and select *Job Control* in the *File*-menu.
+6. Navigate to the location of scripts and open *deshake.GOPR0260.all.jobs*
 
 ## Joining multiple clips to one
 
