@@ -10,25 +10,26 @@
 ## Usage
 Common use case there is little more to it than:
 
-1. Run the command in Powershell `PS> .\deshake.ps1 C:\**\GOPR0260.MP4`
+1. Run the command in Powershell
+  * `PS> .\deshake.ps1 C:\**\GOPR0260.MP4`
 2. The first time around this starts VirtualDub and start reporting on total number of frames via the AviSynth-logger. The file is called `deshake.GOPR0260.stats.log`.
 3. Close VirtualDub as soon as it starts processing the file.
-4. Run the script again `PS> .\deshake.ps1 C:\**\GOPR0260.MP4`. This time around a total of six scripts have been created.
-
-
-	deshake.GOPR0260.all.jobs
-	deshake.GOPR0260.framecount.avs
-	deshake.GOPR0260.framecount.script
-	deshake.GOPR0260.pass1.avs
-	deshake.GOPR0260.pass2.avs
-	deshake.GOPR0260.stats.log
-
-5. Open VirtualDub and select *Job Control* in the *File*-menu.
-6. Navigate to the location of scripts and open *deshake.GOPR0260.all.jobs*
+4. Run the script again 
+  * `PS> .\deshake.ps1 C:\**\GOPR0260.MP4`.
+5. This time around a total of six scripts have been created.
+  * deshake.GOPR0260.all.jobs
+  * deshake.GOPR0260.framecount.avs
+  * deshake.GOPR0260.framecount.script
+  * deshake.GOPR0260.pass1.avs
+  * deshake.GOPR0260.pass2.avs
+  * deshake.GOPR0260.stats.log
+6. Open VirtualDub and select *Job Control* in the *File*-menu.
+7. Navigate to the location of scripts and open *deshake.GOPR0260.all.jobs*
 
 ## Joining multiple clips to one
 
-1. Create a job as per usual i.e. `PS > .\deshake.ps1 C:\**\GOPR0260.MP4`
+1. Create a job as per usual i.e:
+  * `PS > .\deshake.ps1 C:\**\GOPR0260.MP4`
 2. Interupt the framecounter once a total number of frames has been captured 
 3. Change number of scripts by adding additional sources with *FFAudioSource* and *FFVideoSource*
 4. Splice them together with *AudioDub* and *AlignedSplice*. 
@@ -50,7 +51,6 @@ Common use case there is little more to it than:
 	# Deshaker("19|1|30|4|1|0|1|0|640|480|1|2|1000|1000|1000|1000|4|1|3|2|8|30|300|4|C:\\usr\\xyz\\Deshaker.log|0|0|0|0|0|0|0|0|0|0|0|0|0|1|10|10|5|10|0|0|30|30|0|0|1|0|1|1|0|10|1000|1|90|1|1|20|5000|100|20|1|0|ff00ff")
 
 ## Additional info
-[Blog post](http://abarry.org/avisynth-virtualdub-linux-gopro-hero-4-black-120fps-video/
+1. [Blog post](http://abarry.org/avisynth-virtualdub-linux-gopro-hero-4-black-120fps-video/
 ) on how to do this on linux with WINE
-http://www.rarewares.org/aac-decoders.php#aac_parser
-http://avisynth.nl/index.php/FAQ_loading_clips
+2. http://avisynth.nl/index.php/FAQ_loading_clips
