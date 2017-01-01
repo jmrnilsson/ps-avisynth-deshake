@@ -39,10 +39,10 @@ Common use case there is little more to it than:
 ### Example below
 
 	LoadVirtualDubPlugin ("C:\devwork\ps-avisynth-deshake\Deshaker.vdf", "deshaker", preroll=0)
-	A1 = FFAudioSource("M:\usr\FOTO\GOPRO\2016-11-06\HERO5 Black 2\260\GOPR0260.MP4")
-	V1 = FFVideoSource("M:\usr\FOTO\GOPRO\2016-11-06\HERO5 Black 2\260\GOPR0260.MP4")
-	A2 = FFAudioSource("M:\usr\FOTO\GOPRO\2016-11-06\HERO5 Black 2\260\GP010260.MP4")
-	V2 = FFVideoSource("M:\usr\FOTO\GOPRO\2016-11-06\HERO5 Black 2\260\GP010260.MP4")
+	A1 = FFAudioSource("X:\2016-11-06\HERO5 Black 2\260\GOPR0260.MP4")
+	V1 = FFVideoSource("X:\HERO5 Black 2\260\GOPR0260.MP4")
+	A2 = FFAudioSource("X:\HERO5 Black 2\260\GP010260.MP4")
+	V2 = FFVideoSource("X:\HERO5 Black 2\260\GP010260.MP4")
 	# AlignedSplice(AudioDub(V1, A1).ConvertToRGB32(matrix="PC.709"),AudioDub(V2, A2).ConvertToRGB32(matrix="PC.709"))
 	AlignedSplice(AudioDub(V1, A1),AudioDub(V2, A2))
 	Trim(28853, 29508)

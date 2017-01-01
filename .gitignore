@@ -1,5 +1,7 @@
 **/*virtualdub*
 
+**/*.zip
+**/*.7z
 **/*.png
 **/*.jobs
 **/*.avs
