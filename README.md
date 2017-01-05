@@ -1,5 +1,5 @@
 # Powershell video deshaker script generator
-Using Gunnar Thalin's excellent [Deshaker-plugin](http://www.guthspot.se/video/deshaker.htm) can be a tedious task because of settings. This script generates the necessary AviSynth and VirtualDub-scripts with some default-settings so that it can be done in a single stroke. 
+Using Gunnar Thalin's excellent [Deshaker-plugin](http://www.guthspot.se/video/deshaker.htm) can be tedious because of settings. This script generates the necessary AviSynth and VirtualDub-scripts with some default-settings so that it can be done in a single stroke. 
 
 ## Requirements
 1. VirtualDub x86-version
@@ -34,7 +34,7 @@ Common use case there is little more to it than:
 2. Interupt the framecounter once a total number of frames has been captured 
 3. Change number of scripts by adding additional sources with *FFAudioSource* and *FFVideoSource*
 4. Splice them together with *AudioDub* and *AlignedSplice*. 
-5. Simulating protune in dark scenarios using the following `Tweak(sat=1.20)` and `Levels(25, 1.33, 245, 0, 255)`
+5. Simulating color correction in dark scenarios using the following `Tweak(sat=1.20)` and `Levels(25, 1.33, 245, 0, 255)`
 
 ### Example below
 
