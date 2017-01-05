@@ -1,5 +1,15 @@
 # Powershell video deshaker script generator
-Using Gunnar Thalin's excellent [Deshaker-plugin](http://www.guthspot.se/video/deshaker.htm) can be tedious because of settings. This script generates the necessary AviSynth and VirtualDub-scripts with some default-settings so that it can be done in a single stroke. 
+Using Gunnar Thalin's excellent [Deshaker-plugin](http://www.guthspot.se/video/deshaker.htm) can be tedious because of settings. This script generates the necessary AviSynth and VirtualDub-scripts with some default-settings so that it can be done in a single stroke. **Note** that VirtualDub and AviSynth are seperate applications. Do *not* reach out to the creators of these application because of this tools' incapability to generate working scripts.
+
+## Rationale
+The idea is do most of the heavy lifting in AviSynth, yet VirtualDub is used for analysis passes. This makes it easier to use a different tool for these passes. Additionally AviSynth maintains decent [documentation](http://avisynth.nl/index.php/Main_Page) and [description](http://avisynth.nl/index.php/Category:Internal_filters) of internal filters. **Note** that passes are called `framecount`, `pass1` and `pass2` yet this does not reflect the number of analysis passes to run. The general steps are:
+
+1. Count number of frames (this can be cancelled once started).
+2. Run first deshaker pass
+3. Run second deshaker pass and first video analysis pass
+3. Repeat the second deshaker pass and run second video analysis pass
+
+Also, this tool scaffolds a few scripts that are entirely open for modification. In some cases a script be rerun with different settings without having to rerun all. Naturally, changes cascades through the chain of scripts. So any change made to prior will require later scripts to be rerun.
 
 ## Requirements
 1. VirtualDub x86-version
