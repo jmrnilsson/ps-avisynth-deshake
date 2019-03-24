@@ -12,3 +12,5 @@
 **/*.pass
 **/*.vdf
 .vscode
+video
+packages
