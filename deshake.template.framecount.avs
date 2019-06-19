@@ -1,5 +1,5 @@
-A1 = FFAudioSource("{0}")
-V1 = FFVideoSource("{0}")
+A1 = FFAudioSource('C:\video\${name}')
+V1 = FFVideoSource('C:\video\${name}')
 AudioDub(V1, A1).ConvertToRGB32(matrix="PC.709")
 # Trim(3000, 3750)
-WriteFile("{1}", "FrameCount")
+WriteFile('deshake.${name}.stats.log', "FrameCount")
