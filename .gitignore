@@ -15,3 +15,7 @@
 input_video
 packages
 .vscode
+__pycache__/
+.venv/
+video/
+.idea/
