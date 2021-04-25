@@ -1,5 +1,5 @@
 SetMemoryMax(500)
-LoadVirtualDubPlugin ("C:\devwork\ps-avisynth-deshake\Deshaker.vdf", "deshaker", preroll=0)
+LoadVirtualDubPlugin ("M:\devwork\ps-avisynth-deshake\Deshaker.vdf", "deshaker", preroll=0)
 A1 = FFAudioSource("[0]")
 V1 = FFVideoSource("[0]")
 AudioDub(V1, A1).ConvertToRGB32(matrix="PC.709")
