@@ -11,3 +11,7 @@
 **/*.log
 **/*.pass
 **/*.vdf
+.old
+input_video
+packages
+.vscode

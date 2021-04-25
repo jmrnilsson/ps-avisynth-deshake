@@ -13,7 +13,7 @@ Also, this tool scaffolds a few scripts that are entirely open for modification.
 
 ## Requirements
 1. VirtualDub x86-version
-2. Deshaker-plugin x86-version
+2. Deshaker-plugin x86-version (maybe this VDF should be unzipped into 32-plugin folder of VirtualDub. But probably not. A specific version removed Avisynth so this is probably not relvant anymore).
 3. Avisynth [^2.6](https://sourceforge.net/projects/avisynth2/files/latest/download)
 4. For go pro MP4 support FFMPEG DLLs are needed [FFMS ^2](https://github.com/FFMS/ffms2/releases)
 5. Move files from `ffm2-2.20-icl/x86` to `Program Files (x86)/AviSynth 2.5/plugins`
