@@ -1,43 +1,51 @@
 # Powershell video deshaker script generator
-Using Gunnar Thalin's excellent [Deshaker-plugin](http://www.guthspot.se/video/deshaker.htm) can be tedious because of settings. This script generates the necessary AviSynth and VirtualDub-scripts with some default-settings so that it can be done in a single stroke. **Note** that VirtualDub and AviSynth are seperate applications. Do *not* reach out to the creators of these application because of this tools' incapability to generate working scripts.
+Using Gunnar Thalin's excellent [Deshaker-plugin](http://www.guthspot.se/video/deshaker.htm) can be tedious because of
+settings. This script generates the necessary AviSynth and VirtualDub-scripts with some default-settings so that it can
+be done in a single stroke. **Note** that VirtualDub and AviSynth are seperate applications. Do *not* reach out to the
+creators of these application because of this tools' incapability to generate working scripts.
 
 ## Rationale
-The idea is do most of the heavy lifting in AviSynth, yet VirtualDub is used for analysis passes. This makes it easier to use a different tool for these passes. Additionally AviSynth maintains decent [documentation](http://avisynth.nl/index.php/Main_Page) and [description](http://avisynth.nl/index.php/Category:Internal_filters) of internal filters. **Note** that passes are called `framecount`, `pass1` and `pass2` yet this does not reflect the number of analysis passes to run. The general steps are:
+The idea is do most of the heavy lifting in AviSynth, yet VirtualDub is used for analysis passes. This makes it easier
+to use a different tool for these passes. Additionally AviSynth maintains decent 
+[documentation](http://avisynth.nl/index.php/Main_Page) and 
+[description](http://avisynth.nl/index.php/Category:Internal_filters) of internal filters. The general steps are:
 
 1. Count number of frames (this can be cancelled once started).
 2. Run first deshaker pass
 3. Run second deshaker pass and first video analysis pass
-3. Repeat the second deshaker pass and run second video analysis pass
+4. Repeat the second deshaker pass and run second video analysis pass
 
-Also, this tool scaffolds a few scripts that are entirely open for modification. In some cases a script be rerun with different settings without having to rerun all. Naturally, changes cascades through the chain of scripts. So any change made to prior will require later scripts to be rerun.
+Consequently, running the second deshaker pass twice circumvents having to use a lossless intermediate video at the cost
+of some compute. Moreover this tool, now rewritten in [luigi](https://luigi.readthedocs.io/en/stable/), scaffolds a few 
+scripts that are entirely open for modification. In some cases a script be rerun with different settings without having
+to rerun all. Naturally, changes cascades through the chain of scripts. So any change made affect later tasks. A 
+working [Powershell version is also available](powershell_version/) but not maintained.
+
 
 ## Requirements
 1. VirtualDub x86-version
-2. Deshaker-plugin x86-version (maybe this VDF should be unzipped into 32-plugin folder of VirtualDub. But probably not. A specific version removed Avisynth so this is probably not relvant anymore).
+2. Deshaker-plugin x86-version (the VDF should be unzipped into repository root).
 3. Avisynth [^2.6](https://sourceforge.net/projects/avisynth2/files/latest/download)
-4. For go pro MP4 support FFMPEG DLLs are needed [FFMS ^2](https://github.com/FFMS/ffms2/releases)
+4. Some video formats requires FFMPEG DLLs for AviSynth [FFMS ^2](https://github.com/FFMS/ffms2/releases)
 5. Move files from `ffm2-2.20-icl/x86` to `Program Files (x86)/AviSynth 2.5/plugins`
 
 ## Usage
 Common use case there is little more to it than:
 
-1. Run the command in Powershell
-  * `PS> .\deshake.ps1 C:\**\GOPR0260.MP4`
-2. The first time around this starts VirtualDub and start reporting on total number of frames via the AviSynth-logger. The file is called `deshake.GOPR0260.stats.log`.
-3. Close VirtualDub as soon as it starts processing the file.
-4. Run the script again 
-  * `PS> .\deshake.ps1 C:\**\GOPR0260.MP4`.
-5. This time around a total of six scripts have been created.
-  * deshake.GOPR0260.all.jobs
-  * deshake.GOPR0260.framecount.avs
-  * deshake.GOPR0260.framecount.script
-  * deshake.GOPR0260.pass1.avs
-  * deshake.GOPR0260.pass2.avs
-  * deshake.GOPR0260.stats.log
-6. Open VirtualDub and select *Job Control* in the *File*-menu.
-7. Navigate to the location of scripts and open *deshake.GOPR0260.all.jobs*
+1. Setup repository root a PYTHONPATH.
+2. Run `luigi --module tasks DeshakeAllPasses --path video/MVI_2970.MOV --local-scheduler` (replace the video file)
+3. This starts VirtualDub and start reporting on total number of frames via the AviSynth-logger. You can close this
+	almost immediately. A total of six scripts should have been created.
+  * deshake.MVI_2970.all.jobs
+  * deshake.MVI_2970.framecount.avs
+  * deshake.MVI_2970.framecount.script
+  * deshake.MVI_2970.pass1.avs
+  * deshake.MVI_2970.pass2.avs
+  * deshake.MVI_2970.stats.log
+4. Open VirtualDub and select *Job Control* in the *File*-menu.
+5. Navigate to the location of scripts and open *deshake.GOPR0260.all.jobs*
 
-## Joining multiple clips to one
+## Example: Joining multiple clips to one
 
 1. Create a job as per usual i.e:
   * `PS > .\deshake.ps1 C:\**\GOPR0260.MP4`
